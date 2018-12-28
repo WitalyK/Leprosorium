@@ -25,7 +25,8 @@ configure do #при инициализации и при обновлении �
 end
 
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
+	@results = @db.execute 'SELECT * FROM Posts ORDER BY id DESC'
+	erb :index			
 end
 
 get '/new' do
@@ -34,5 +35,11 @@ end
 
 post '/new' do
     content = params[:content]
-    erb "You typed #{content}"
+    if content.length <= 0
+    	@error = 'Type post text'
+    	return erb :new
+    end
+
+    @db.execute 'insert into Posts (content, Created_date) values (?, datetime())', [content]
+    redirect to '/'
 end
