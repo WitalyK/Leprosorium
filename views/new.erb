@@ -1,9 +1,15 @@
 <h2>Add new Post</h2>
 <p>
-  <form action="/new" method="POST" role="form">
-       <textarea name="content" class="form-control" rows="6" placeholder="Type post text here" style = "width: 900px"></textarea> 
-       <br/>
-       <button type="submit" class="btn btn-primary">Primary</button>
-  </form>
+  	<form action="/new" method="POST" role="form">
+  		<div class="input-group input-group-lg">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-lg">Your Name</span>
+			</div>
+				<input name="username" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+		</div>
+       	<textarea name="content" class="form-control" rows="6" placeholder="Type post text here" style = "width: 900px"></textarea> 
+       	<br/>
+       	<button type="submit" class="btn btn-primary">Primary</button>
+  	</form>
 </p>
 
